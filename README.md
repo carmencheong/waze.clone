@@ -1,2 +1,2 @@
 # waze.clone
-Clone app with react native for famous GPS/ navigation app Waze.
+Clone app with expo for famous GPS/ navigation app Waze.

@@ -18,7 +18,7 @@ export class LoadingScreen extends Component {
 
     handleNavigateToAuth = () => {
         const { navigation } = this.props;
-        navigation.push('login')
+        navigation.push('locationAccess')
     }
 
     async _cacheResourcesAsync() {
@@ -34,18 +34,18 @@ export class LoadingScreen extends Component {
         const { isReady } = this.state;
         return (
            <View style={styles.container}>
-                    {!isReady &&(
-                            <AppLoading
-                            startAsync={this._cacheResourcesAsync}
-                            onFinish={() => this.setState({ isReady: true })}
-                            onError={console.warn}
-                            />
-                    )}
-                <Image
-                style={styles.image}
-                source={require('../.././assets/waze.png')} />
-                <Text style={styles.logoTitle}>WAZE</Text>
-                <Text style={styles.logoSubTitle}>OUTSMARTING TRAFFIC, TOGETHER.</Text>
+              {!isReady &&(
+                      <AppLoading
+                      startAsync={this._cacheResourcesAsync}
+                      onFinish={() => this.setState({ isReady: true })}
+                      onError={console.warn}
+                      />
+              )}
+          <Image
+          style={styles.image}
+          source={require('../.././assets/waze.png')} />
+          <Text style={styles.logoTitle}>WAZE</Text>
+          <Text style={styles.logoSubTitle}>OUTSMARTING TRAFFIC, TOGETHER.</Text>
            </View>
         )
     }

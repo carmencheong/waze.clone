@@ -10,12 +10,12 @@ class loginScreen extends Component {
    constructor(props){
    super(props);
    this.state = {
-    email: "",
-    password: "",
-    isAndroid : Platform.OS == "android" ? true: false
-   };
+      email: "",
+      password: "",
+      isAndroid : Platform.OS == "android" ? true: false
+    };
    }
-   
+   // code for goog
    componentDidMount() {
    setTimeout(()=> { this.handleAutoSignIn()}, 200);
   //  if (this.state.isAndroid){
@@ -23,9 +23,6 @@ class loginScreen extends Component {
   //  }
    }
 
-   componentDidUpdate() {
-
-   }
 //  // Google signin ^.^
 //  initAsyncGoogleSignIn = async () => {
 //   await GoogleSignIn.initAsync({
@@ -79,48 +76,48 @@ class loginScreen extends Component {
    const { navigation } = this.props;
    const {isAndroid} = this.state;
    return (
-     <KeyboardAvoidingView behavior="height"  style={styles.container}>
+    <KeyboardAvoidingView behavior="height"  style={styles.container}>
      <View>
-      <View style={{justifyContent:"flex-start"}}>
-        <Avatar rounded
-          size="xlarge"
-          source={require('../.././assets/loginLogo.jpg')}
+        <View style={{justifyContent:"flex-start"}}>
+          <Avatar rounded
+            size="xlarge"
+            source={require('../.././assets/loginLogo.jpg')}
+          />
+          <Text style={styles.headLine}>Welcome back, Wazer!</Text>
+        </View>
+        <Input 
+          placeholder="Email" 
+          autoFocus
+          blurOnSubmit
+          name="email"
+          leftIcon ={
+          <MaterialIcons 
+            name="mark-email-read" 
+            size={24} 
+            color="gray" />
+          }
+          type="email"
+          containerStyle={styles.input}
+          onChangeText={(e) => this.setState({email: e}) }/>
+        <Input 
+          placeholder="Password"
+          secureTextEntry
+          blurOnSubmit
+          underlineColorAndroid="transparent"
+          name="password"
+          type="password"
+          leftIcon ={
+          <MaterialIcons 
+            name="lock" 
+            size={24} 
+            color="gray" />
+          }
+          containerStyle={styles.input}
+          onChangeText={
+          (p) => this.setState({password: p})
+          }
         />
-        <Text style={styles.headLine}>Welcome back, Wazer!</Text>
       </View>
-      <Input 
-        placeholder="Email" 
-        autoFocus
-        blurOnSubmit
-        name="email"
-        leftIcon ={
-        <MaterialIcons 
-          name="mark-email-read" 
-          size={24} 
-          color="gray" />
-        }
-        type="email"
-        containerStyle={styles.input}
-        onChangeText={(e) => this.setState({email: e}) }/>
-      <Input 
-        placeholder="Password"
-        secureTextEntry
-        blurOnSubmit
-        underlineColorAndroid="transparent"
-        name="password"
-        type="password"
-        leftIcon ={
-        <MaterialIcons 
-          name="lock" 
-          size={24} 
-          color="gray" />
-        }
-        containerStyle={styles.input}
-        onChangeText={
-        (p) => this.setState({password: p})
-        }
-      />
-    </View>
       <TouchableOpacity style={styles.button} onPress={() => this.handleSignIn()}>
       <Text style={styles.buttonTitle}>Login</Text>
       </TouchableOpacity>
@@ -166,7 +163,7 @@ class loginScreen extends Component {
       </TouchableOpacity>
       </View>
       )}
-     </KeyboardAvoidingView >
+    </KeyboardAvoidingView >
    )
    }
 };

@@ -3,11 +3,14 @@ import { Image, Text, TouchableOpacity,  View } from 'react-native'
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import styles from "./styles"
 import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
 const LocationAccess = ({navigation, route}) => {
   const [location, setLocation] = useState(null);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [error, errorMessage] = useState(null);
+  const [geocode, setGeoCode] = useState(null);
   const [btnDisabled, setEnabled] = useState(true);
   useEffect(() => {
+      // code to set the header
       const unsbuscribe = navigation.setOptions({
         headerBacktitle: "Location Access",
         headerStyle: {
@@ -35,18 +38,33 @@ const LocationAccess = ({navigation, route}) => {
     }
   }, [])
 
-  const locationAcessRequest = async () => {
-      let { status } = await Location.requestPermissionsAsync();
+  
+  const getLocationAsync = async () => {
+      // helper method to request permissions from device
+      // sets geoCode, locaiton, errorMessage if there is any
+      let { status } = await Permissions.askAsync(Permissions.LOCATION);
       if (status !== 'granted') {
-        setErrorMsg('Permission to access location was denied');
-        return;
-      }
+      errorMessage({
+        error: 'Permission to access location was denied',
+      });
+    }
 
-      let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
-      setEnabled(true);
-      navigation.push("home")
+    let location = await Location.getCurrentPositionAsync({
+        accuracy:Location.Accuracy.Highest
+      });
+    const { latitude , longitude } = location.coords
+    getGeocodeAsync({latitude, longitude})
+    setLocation({ location: {latitude, longitude}});
+    // navigate to home screen once access is granted.
+    // pass location in route params.
+    navigation.navigate('home', {location: location})
   };
+
+  const getGeocodeAsync= async (location) => {
+    // Get the location from device 
+    let geocode = await Location.reverseGeocodeAsync(location)
+    setGeoCode({ geocode})
+  }
 
   return (
   <View style={styles.container}>
@@ -85,7 +103,8 @@ const LocationAccess = ({navigation, route}) => {
      </TouchableOpacity>
      <TouchableOpacity 
         style={styles.button}
-        onPress={() => locationAcessRequest() }
+        onPress={() => getLocationAsync() }
+        disabled={!location}
         raised title="Register">
         <Text style={styles.buttonTitle}>Give Waze location access</Text>
       </TouchableOpacity>

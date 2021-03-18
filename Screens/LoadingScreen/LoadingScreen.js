@@ -18,7 +18,7 @@ export class LoadingScreen extends Component {
 
     handleNavigateToAuth = () => {
         const { navigation } = this.props;
-        navigation.push('locationAccess')
+        navigation.replace('demo')
     }
 
     async _cacheResourcesAsync() {

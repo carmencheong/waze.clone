@@ -10,6 +10,7 @@ import LoadingScreen from './Screens/LoadingScreen/LoadingScreen';
 import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen";
 import LocationAccess from "./Screens/LocationAccess/LocationAccess";
+import DemoScreen from "./Screens/DemoScreen/DemoScreen"
 const Stack = createStackNavigator();
 const globalScreenOptions = {
   headerStyle: { backgroundColor:"#2C6BED"},
@@ -24,6 +25,11 @@ export default function App() {
         <Stack.Screen 
           name="splash"  
           component={LoadingScreen} 
+          options={{headerShown: false}}
+          />
+         <Stack.Screen 
+          name="demo"  
+          component={DemoScreen} 
           options={{headerShown: false}}
           />
         <Stack.Screen 

@@ -104,7 +104,6 @@ const LocationAccess = ({navigation, route}) => {
      <TouchableOpacity 
         style={styles.button}
         onPress={() => getLocationAsync() }
-        disabled={!location}
         raised title="Register">
         <Text style={styles.buttonTitle}>Give Waze location access</Text>
       </TouchableOpacity>

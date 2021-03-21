@@ -27,7 +27,7 @@ const DemoScreen = ({navigation, route}) => {
           <TouchableOpacity 
             style={styles.startBtn}
             i
-            onPress={() => navigation.push('home')}
+            onPress={() => navigation.push('locationAccess')}
             raised title="Register">
             <Text style={styles.startBtnText}>ابدأ</Text>
           </TouchableOpacity>

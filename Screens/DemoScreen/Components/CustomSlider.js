@@ -2,13 +2,14 @@ import React, { useState }  from 'react'
 import { StyleSheet, TouchableOpacity, Image, Text, View } from 'react-native'
 import { FontAwesome } from "@expo/vector-icons";
 import GestureRecognizer from 'react-native-swipe-gestures';
+import useInterval from '../CustomHooks/useInterval';
+import { ScrollView } from 'react-native';
+
 
 const customSlider = ({sliderContent}) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const delay = 3000;
   let activeContent = sliderContent[activeIndex];
-
-  // slide every 2 seconds 
-  // custom hook call goes here
 
 
   const _swipeRightHandler = () => {
@@ -26,33 +27,40 @@ const customSlider = ({sliderContent}) => {
     let endIndex = sliderContent.length - 1;
     newIndex < 0 ? setActiveIndex(endIndex) : setActiveIndex(newIndex);
   }
-       
 
+// custom hook to slide the content automatically every 3 sec.
+  useInterval( _swipeRightHandler, delay)
+  
   return (
       <View style={styles.container}>
           <GestureRecognizer
              onSwipeRight={ () => _swipeRightHandler()}
              onSwipeLeft={() => _swipeLeftHandler()}
           >
+
+          {sliderContent.map( (frame, id) => (
+          <ScrollView key={id}>
             <Image
-                  style={styles.image}
-                  source={activeContent.imageURL} />
+                    style={styles.image}
+                    source={frame.imageURL} />
             <Text style={styles.logoTitle}>
-                {activeContent.text}
+                  {frame.text}
             </Text>
-            <View style={styles.containerSliderControls}>
-              {sliderContent.map((obj,id)=>(
-                <TouchableOpacity key={id} 
-                  onPress={() => setActiveIndex(id)}>
-                  <FontAwesome 
-                    name="circle" size={10} 
-                    style={{
-                      color: activeIndex == id ? "#00bfff": "#c5c5c5",
-                      marginRight: 4
-                      }}/>
-                </TouchableOpacity>
-              ))}
-            </View>
+          </ScrollView>
+          ))}
+          <View style={styles.containerSliderControls}>
+            {sliderContent.map((obj,id)=>(
+              <TouchableOpacity key={id} 
+                onPress={() => setActiveIndex(id)}>
+                <FontAwesome 
+                  name="circle" size={10} 
+                  style={{
+                    color: activeIndex == id ? "#00bfff": "#c5c5c5",
+                    marginRight: 4
+                    }}/>
+              </TouchableOpacity>
+            ))}
+          </View>
         </GestureRecognizer>
       </View>
   )

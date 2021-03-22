@@ -37,17 +37,12 @@ const customSlider = ({sliderContent}) => {
              onSwipeRight={ () => _swipeRightHandler()}
              onSwipeLeft={() => _swipeLeftHandler()}
           >
-
-          {sliderContent.map( (frame, id) => (
-          <ScrollView key={id}>
             <Image
                     style={styles.image}
-                    source={frame.imageURL} />
+                    source={activeContent.imageURL} />
             <Text style={styles.logoTitle}>
-                  {frame.text}
+                  {activeContent.text}
             </Text>
-          </ScrollView>
-          ))}
           <View style={styles.containerSliderControls}>
             {sliderContent.map((obj,id)=>(
               <TouchableOpacity key={id} 

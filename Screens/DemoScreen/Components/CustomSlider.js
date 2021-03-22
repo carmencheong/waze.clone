@@ -1,16 +1,26 @@
-import React, { useState }  from 'react'
-import { StyleSheet, TouchableOpacity, Image, Text, View } from 'react-native'
+import React, { useRef, useState }  from 'react'
+import { StyleSheet, TouchableOpacity,
+         Animated, Image, Text, View,
+        Dimensions, FlatList } from 'react-native'
 import { FontAwesome } from "@expo/vector-icons";
 import GestureRecognizer from 'react-native-swipe-gestures';
 import useInterval from '../CustomHooks/useInterval';
-import { ScrollView } from 'react-native';
 
+const { width, height } = Dimensions.get('screen');
 
 const customSlider = ({sliderContent}) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const delay = 3000;
+  const animate = useRef( new Animated.Value(0)).current;
+  const delay = 5000;
   let activeContent = sliderContent[activeIndex];
 
+  const _onLoad = () => {
+    Animated.timing(animate, {
+      toValue: 1,
+      duration: 1000, 
+      useNativeDriver: true,
+    }).start();
+  };
 
   const _swipeRightHandler = () => {
       // handler hand geasture swipe right
@@ -32,32 +42,50 @@ const customSlider = ({sliderContent}) => {
   useInterval( _swipeRightHandler, delay)
   
   return (
-      <View style={styles.container}>
-          <GestureRecognizer
-             onSwipeRight={ () => _swipeRightHandler()}
-             onSwipeLeft={() => _swipeLeftHandler()}
-          >
-            <Image
+    <View style={styles.container}>
+      <Animated.FlatList 
+        data={sliderContent}
+        horizontal
+        pagingEnabled
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          marginTop: 5,
+        }}
+        scrollEventThrottle={32}
+        keyExtractor={item => item.key}
+        renderItem={ ({item}) => {
+          return (
+              <GestureRecognizer
+                onSwipeRight={ () => _swipeRightHandler()}
+                onSwipeLeft={() => _swipeLeftHandler()}
+              >
+              <View style={{ width: width * .95, alignItems:"center", justifyContent: "center"}}>
+                <Image
                     style={styles.image}
-                    source={activeContent.imageURL} />
-            <Text style={styles.logoTitle}>
-                  {activeContent.text}
-            </Text>
-          <View style={styles.containerSliderControls}>
-            {sliderContent.map((obj,id)=>(
-              <TouchableOpacity key={id} 
-                onPress={() => setActiveIndex(id)}>
-                <FontAwesome 
-                  name="circle" size={10} 
-                  style={{
-                    color: activeIndex == id ? "#00bfff": "#c5c5c5",
-                    marginRight: 4
-                    }}/>
-              </TouchableOpacity>
-            ))}
-          </View>
-        </GestureRecognizer>
+                    source={item.imageURL} />
+                <Text style={styles.logoTitle}>
+                      {item.text}
+                </Text>
+              </View>
+              </GestureRecognizer>
+          )
+        }}
+
+      />
+      <View style={styles.containerSliderControls}>
+        {sliderContent.map((obj,id)=>(
+          <TouchableOpacity key={id} 
+            onPress={() => setActiveIndex(id)}>
+            <FontAwesome 
+              name="circle" size={10} 
+              style={{
+                color: activeIndex == id ? "#00bfff": "#c5c5c5",
+                marginRight: 4
+                }}/>
+          </TouchableOpacity>
+        ))}
       </View>
+    </View>
   )
 }
 
@@ -75,9 +103,12 @@ const styles = StyleSheet.create({
     marginBottom: 150,
     marginTop: 100,
     },
+  scroll: {
+
+  },
   image: {
-    height: 250,
-    width: 250,
+    height: width /2,
+    width: width / 2 ,
     borderRadius: 50,
   },
   logoTitle: {

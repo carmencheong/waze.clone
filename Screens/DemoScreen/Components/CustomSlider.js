@@ -43,37 +43,22 @@ const customSlider = ({sliderContent}) => {
   
   return (
     <View style={styles.container}>
-      <Animated.FlatList 
-        data={sliderContent}
-        horizontal
-        pagingEnabled
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{
-          marginTop: 5,
-        }}
-        scrollEventThrottle={32}
-        keyExtractor={item => item.key}
-        renderItem={ ({item}) => {
-          return (
-              <GestureRecognizer
-                onSwipeRight={ () => _swipeRightHandler()}
-                onSwipeLeft={() => _swipeLeftHandler()}
-              >
-              <View style={{ width: width * .95, alignItems:"center", justifyContent: "center"}}>
-                <Image
-                    style={styles.image}
-                    source={item.imageURL} />
-                <Text style={styles.logoTitle}>
-                      {item.text}
-                </Text>
-              </View>
-              </GestureRecognizer>
-          )
-        }}
-
-      />
+      <GestureRecognizer
+        onSwipeRight={ () => _swipeRightHandler()}
+        onSwipeLeft={() => _swipeLeftHandler()}
+      >
+          <View style={{ width: width * .95, alignItems:"center", justifyContent: "center"}}>
+          <Image
+              style={styles.image}
+              source={activeContent.imageURL} />
+          <Text style={styles.logoTitle}>
+                {activeContent.text}
+          </Text>
+        </View>
+     </GestureRecognizer>
+      
       <View style={styles.containerSliderControls}>
-        {sliderContent.map((obj,id)=>(
+        {sliderContent.map((_,id)=>(
           <TouchableOpacity key={id} 
             onPress={() => setActiveIndex(id)}>
             <FontAwesome 

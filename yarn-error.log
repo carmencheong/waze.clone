@@ -1,20 +1,30 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\iahme\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add expo-app-loading
+  C:\Program Files\nodejs\node.exe C:\Users\iahme\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add react-native-google-places-autoomplete
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\PuTTY\;C:\Program Files\nodejs\;C:\Program Files (x86)\dotnet\;C:\Users\iahme\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\iahme\AppData\Local\Programs\Python\Python39\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\iahme\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\iahme\AppData\Local\Programs\Python\Python38\;C:\Users\iahme\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\iahme\AppData\Local\Programs\Python\Python38-32\;C:\Users\iahme\AppData\Local\Microsoft\WindowsApps;C:\Users\iahme\AppData\Local\atom\bin;C:\Users\iahme\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\iahme\AppData\Local\Microsoft\WindowsApps;C:\Users\iahme\.dotnet\tools;C:\sqlite\;C:\Program Files\heroku\bin;C:\Users\iahme\AppData\Roaming\npm
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Git\cmd;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\PuTTY\;C:\Program Files (x86)\dotnet\;C:\php;C:\Program Files\Android\jdk\microsoft_dist_openjdk_1.8.0.25\bin;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\OpenJDK\openjdk-8u282-b08\bin;C:\Users\iahme\AppData\Local\Programs\Python\Python39\Scripts\;C:\Users\iahme\AppData\Local\Programs\Python\Python39\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\iahme\AppData\Local\Programs\Python\Python38\Scripts\;C:\Users\iahme\AppData\Local\Programs\Python\Python38\;C:\Users\iahme\AppData\Local\Programs\Python\Python38-32\Scripts\;C:\Users\iahme\AppData\Local\Programs\Python\Python38-32\;C:\Users\iahme\AppData\Local\Microsoft\WindowsApps;C:\Users\iahme\AppData\Local\atom\bin;C:\Users\iahme\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\iahme\AppData\Local\Microsoft\WindowsApps;C:\Users\iahme\.dotnet\tools;C:\sqlite\;C:\Program Files\heroku\bin;C:\php;C:\Users\iahme\AppData\Roaming\npm
 
 Yarn version: 
   1.22.10
 
 Node version: 
-  14.15.3
+  15.11.0
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Projects\MVPs\waze.clone\node_modules\@babel\helper-compilation-targets\node_modules\.bin'
+  Error: https://registry.yarnpkg.com/react-native-google-places-autoomplete: Not found
+      at Request.params.callback [as _callback] (C:\Users\iahme\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66988:18)
+      at Request.self.callback (C:\Users\iahme\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140662:22)
+      at Request.emit (node:events:378:20)
+      at Request.<anonymous> (C:\Users\iahme\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141634:10)
+      at Request.emit (node:events:378:20)
+      at IncomingMessage.<anonymous> (C:\Users\iahme\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141556:12)
+      at Object.onceWrapper (node:events:484:28)
+      at IncomingMessage.emit (node:events:390:22)
+      at endReadableNT (node:internal/streams/readable:1307:12)
+      at processTicksAndRejections (node:internal/process/task_queues:81:21)
 
 npm manifest: 
   {
@@ -29,7 +39,11 @@ npm manifest:
     "dependencies": {
       "@react-navigation/native": "^5.9.3",
       "@react-navigation/stack": "^5.14.3",
-      "expo": "~40.0.0",
+      "expo": "^40.0.1",
+      "expo-app-loading": "^1.0.1",
+      "expo-asset": "^8.2.2",
+      "expo-location": "~10.0.0",
+      "expo-permissions": "^11.0.0",
       "expo-status-bar": "~1.0.3",
       "firebase": "8.2.7",
       "fs-extra": "9.0.0",
@@ -39,6 +53,8 @@ npm manifest:
       "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
       "react-native-elements": "^3.3.0",
       "react-native-gesture-handler": "^1.10.3",
+      "react-native-maps": "^0.27.1",
+      "react-native-swipe-gestures": "^1.0.5",
       "react-native-web": "~0.13.12"
     },
     "devDependencies": {
@@ -1215,6 +1231,23 @@ Lockfile:
       semver "7.3.2"
       slugify "^1.3.4"
   
+  "@expo/configure-splash-screen@0.3.1":
+    version "0.3.1"
+    resolved "https://registry.yarnpkg.com/@expo/configure-splash-screen/-/configure-splash-screen-0.3.1.tgz#a55b52718751907fd3fbaeb76dbd4162d282fa13"
+    integrity sha512-Wf9U8OYoIQojYjTuXgtTqDmlA4SdSEEQo9PxnVKuF8224FtJoYX1Kwc6kiVKc/4suplrqE71ZVJXOE2Uyh4SHw==
+    dependencies:
+      "@react-native-community/cli-platform-android" "^4.10.0"
+      "@react-native-community/cli-platform-ios" "^4.10.0"
+      color-string "^1.5.3"
+      commander "^5.1.0"
+      core-js "^3.6.5"
+      deep-equal "^2.0.3"
+      fs-extra "^9.0.0"
+      lodash "^4.17.15"
+      pngjs "^5.0.0"
+      xcode "^3.0.0"
+      xml-js "^1.6.11"
+  
   "@expo/configure-splash-screen@0.3.4":
     version "0.3.4"
     resolved "https://registry.yarnpkg.com/@expo/configure-splash-screen/-/configure-splash-screen-0.3.4.tgz#b91d8f08fd96272bd3d7aaa9b51d6189b932c7cc"
@@ -1996,7 +2029,7 @@ Lockfile:
       hermes-profile-transformer "^0.0.6"
       ip "^1.1.5"
   
-  "@react-native-community/cli-platform-android@^4.13.0", "@react-native-community/cli-platform-android@^4.7.0":
+  "@react-native-community/cli-platform-android@^4.10.0", "@react-native-community/cli-platform-android@^4.13.0", "@react-native-community/cli-platform-android@^4.7.0":
     version "4.13.0"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-android/-/cli-platform-android-4.13.0.tgz#922681ec82ee1aadd993598b814df1152118be02"
     integrity sha512-3i8sX8GklEytUZwPnojuoFbCjIRzMugCdzDIdZ9UNmi/OhD4/8mLGO0dgXfT4sMWjZwu3qjy45sFfk2zOAgHbA==
@@ -2012,7 +2045,7 @@ Lockfile:
       slash "^3.0.0"
       xmldoc "^1.1.2"
   
-  "@react-native-community/cli-platform-ios@^4.7.0":
+  "@react-native-community/cli-platform-ios@^4.10.0", "@react-native-community/cli-platform-ios@^4.7.0":
     version "4.13.0"
     resolved "https://registry.yarnpkg.com/@react-native-community/cli-platform-ios/-/cli-platform-ios-4.13.0.tgz#a738915c68cac86df54e578b59a1311ea62b1aef"
     integrity sha512-6THlTu8zp62efkzimfGr3VIuQJ2514o+vScZERJCV1xgEi8XtV7mb/ZKt9o6Y9WGxKKkc0E0b/aVAtgy+L27CA==
@@ -3570,12 +3603,19 @@ Lockfile:
       snapdragon "^0.8.1"
       to-regex "^3.0.1"
   
+  expo-app-loading@^1.0.1:
+    version "1.0.1"
+    resolved "https://registry.yarnpkg.com/expo-app-loading/-/expo-app-loading-1.0.1.tgz#a2ef73235c5dd0a99c0319ad9d3f4d278237564c"
+    integrity sha512-qgsystchwMHep43YMAMHJAD5bRUikolQpb1d+ySWF4ZFTtNInmLAPqiBcVSey5taRuHD3cAvEijx3wc0W/HfVw==
+    dependencies:
+      expo-splash-screen "0.8.1"
+  
   expo-application@~2.4.1:
     version "2.4.1"
     resolved "https://registry.yarnpkg.com/expo-application/-/expo-application-2.4.1.tgz#f8eb4a3a05a0b8a8f38f2e981f587a815945b685"
     integrity sha512-VHDvXz55LIYdLoE1aR0AFycB1jz4ggbMToUbKAbCEjro+PdUNm/Gj8gQeFgH6wL2oAztQH4qJ+uiOwrw8SFK+Q==
   
-  expo-asset@~8.2.1:
+  expo-asset@^8.2.2, expo-asset@~8.2.1:
     version "8.2.2"
     resolved "https://registry.yarnpkg.com/expo-asset/-/expo-asset-8.2.2.tgz#2b24faccfb7d895097623317bb0555901bbc4e7c"
     integrity sha512-Ckiok7BFB6WjKNifa1b3mx2zGY8DnV2CttSQMTnMd6+0EOx1qOMsZDNkryJVpVOtpAetCdHWd5s9f2CdmosowA==
@@ -3642,6 +3682,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/expo-location/-/expo-location-10.0.0.tgz#2923411649434f2f079343b163b13c5c9eee8b2d"
     integrity sha512-QLEb0iaBv4/blLxxfKRj2/HPisY+1t+g6MgegqZ1j1U/0qih4dvzUQrxie9ZOZyQB9gnXFCRnZv3QzHEb52dcA==
   
+  expo-permissions@^11.0.0:
+    version "11.0.0"
+    resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-11.0.0.tgz#10889073121fea42bbfc35f09a35fa17a316b233"
+    integrity sha512-5+sFdU1HS/4aK9O7AsoLSNjG4f0UzlA3/nBHOPnWxxY2HRFnQp764tSsfSJRnGhM89Qxort6n2RzOusMoNP5ig==
+  
   expo-permissions@~10.0.0:
     version "10.0.0"
     resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-10.0.0.tgz#5b31c54d561d00c7e46cd02321bc3704c51c584b"
@@ -3651,6 +3696,13 @@ Lockfile:
     version "9.3.0"
     resolved "https://registry.yarnpkg.com/expo-secure-store/-/expo-secure-store-9.3.0.tgz#b716d5d115cc50a34037d1afef84fe4b8ea0745c"
     integrity sha512-dNhKcoUUn+1kmEfFVxSU7h+YsqODqlExZQJcQgxgeiuCeeDvJWkE10t3jjrO6aNfrdM5i/X2l3oh401EDslWsQ==
+  
+  expo-splash-screen@0.8.1:
+    version "0.8.1"
+    resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.8.1.tgz#de4a018c82af879eeaa9b697013ef37d9567453a"
+    integrity sha512-7NQo8OgkfQ4sv4mIHE58fkiQTGyl5dOP70uAUTb5YXC/QUsHIqEpKQ6ZXDpkLU1cbZ32c8Vtok4r2FRIUrzxcg==
+    dependencies:
+      "@expo/configure-splash-screen" "0.3.1"
   
   expo-sqlite@~8.5.0:
     version "8.5.0"
@@ -3665,7 +3717,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/expo-status-bar/-/expo-status-bar-1.0.3.tgz#62b4d6145680abd43ba6ecfa465f835e88bf6263"
     integrity sha512-/Orgla1nkIrfswNHbuAOTbPVq0g3+GrhoQVk7MRafY2dwrFLgXhaPExS+eN2hpmzqPv2LG5cqAZDCQUAjmZYBQ==
   
-  expo@~40.0.0:
+  expo@^40.0.1:
     version "40.0.1"
     resolved "https://registry.yarnpkg.com/expo/-/expo-40.0.1.tgz#20ae9f9c787ba1662037094dfd6982380f2c0288"
     integrity sha512-9NrhimvP44I1aDjGHMU4F0izCyfFTTYAQ6xZpWpuc+ZWRZqg8Zv62zNRlzBn+Ydaf1heSucnlJJ3Sp2gMdOEnQ==
@@ -6195,6 +6247,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"
     integrity sha512-HOf0jzRnq2/aFUcdCJ9w9JGzN3gdEg0zFE4FyYlp4jtidqU03D5X7ZegGKfT1EWteR0gPBGp9ye5T5FvSWi9Yg==
   
+  react-native-maps@^0.27.1:
+    version "0.27.1"
+    resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.27.1.tgz#2f10cd417bb2fd938c9e015b1c9b6d9b1a44b97f"
+    integrity sha512-HygBkZBecTnIVRYrSiLRAvu4OmXOYso/A7c6Cy73HkOh9CgGV8Ap5eBea24tvmFGptjj5Hg8AJ94/YbmWK1Okw==
+  
   react-native-ratings@^7.3.0:
     version "7.4.0"
     resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-7.4.0.tgz#2b93c9bdd201238591d09747791b4c55e5862959"
@@ -6212,6 +6269,11 @@ Lockfile:
     version "0.3.1"
     resolved "https://registry.yarnpkg.com/react-native-size-matters/-/react-native-size-matters-0.3.1.tgz#24d0cfc335a2c730f6d58bd7b43ea5a41be4b49f"
     integrity sha512-mKOfBLIBFBcs9br1rlZDvxD5+mAl8Gfr5CounwJtxI6Z82rGrMO+Kgl9EIg3RMVf3G855a85YVqHJL2f5EDRlw==
+  
+  react-native-swipe-gestures@^1.0.5:
+    version "1.0.5"
+    resolved "https://registry.yarnpkg.com/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz#a172cb0f3e7478ccd681fd36b8bfbcdd098bde7c"
+    integrity sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==
   
   react-native-web@~0.13.12:
     version "0.13.18"

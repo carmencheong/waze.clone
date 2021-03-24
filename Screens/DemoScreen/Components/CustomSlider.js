@@ -1,7 +1,7 @@
 import React, { useRef, useState }  from 'react'
 import { StyleSheet, TouchableOpacity,
          Animated, Image, Text, View,
-        Dimensions, FlatList } from 'react-native'
+        Dimensions } from 'react-native'
 import { FontAwesome } from "@expo/vector-icons";
 import GestureRecognizer from 'react-native-swipe-gestures';
 import useInterval from '../CustomHooks/useInterval';
@@ -10,17 +10,8 @@ const { width, height } = Dimensions.get('screen');
 
 const customSlider = ({sliderContent}) => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const animate = useRef( new Animated.Value(0)).current;
   const delay = 5000;
   let activeContent = sliderContent[activeIndex];
-
-  const _onLoad = () => {
-    Animated.timing(animate, {
-      toValue: 1,
-      duration: 1000, 
-      useNativeDriver: true,
-    }).start();
-  };
 
   const _swipeRightHandler = () => {
       // handler hand geasture swipe right

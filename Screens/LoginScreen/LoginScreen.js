@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, KeyboardAvoidingView, TouchableOpacity } from 'react-native';
+import { View, Text, Platform, 
+        KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import { Avatar, Input } from 'react-native-elements'
 import { auth } from "../../firebase"; 
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import  styles  from "./styles";
-// import * as GoogleSignIn from 'expo-google-sign-in';
-import { Platform } from 'react-native';
+import * as GoogleSignIn from 'expo-google-sign-in';
 class loginScreen extends Component {
    constructor(props){
    super(props);
@@ -15,43 +15,43 @@ class loginScreen extends Component {
       isAndroid : Platform.OS == "android" ? true: false
     };
    }
-   // code for goog
+   // code for google sign up
    componentDidMount() {
-   setTimeout(()=> { this.handleAutoSignIn()}, 200);
+  // need testing to integrate google sign up
   //  if (this.state.isAndroid){
   //   setTimeout(()=> { this.initAsyncGoogleSignIn()}, 200);
   //  }
    }
 
-//  // Google signin ^.^
-//  initAsyncGoogleSignIn = async () => {
-//   await GoogleSignIn.initAsync({
-//     behavior: 'web',
-//     clientId: '393652483933-65elpn0hff7g93eg71qmml0c74np2h97.apps.googleusercontent.com',
-//   });
-//   this._syncUserWithStateAsync();
-//   };
-//   _syncUserWithStateAsync = async () => {
-//   await GoogleSignIn.signInSilentlyAsync();
-//   };
+ // Google signin ^.^
+ initAsyncGoogleSignIn = async () => {
+  await GoogleSignIn.initAsync({
+    behavior: 'web',
+    clientId: '393652483933-65elpn0hff7g93eg71qmml0c74np2h97.apps.googleusercontent.com',
+  });
+  this._syncUserWithStateAsync();
+  };
+  _syncUserWithStateAsync = async () => {
+  await GoogleSignIn.signInSilentlyAsync();
+  };
 
-//   signInGoogle = async () => {
-//   try {
-//     await GoogleSignIn.askForPlayServicesAsync();
-//     if (type === 'success') {
-//     this._syncUserWithStateAsync();
-//     }
-//   } catch ({ message }) {
-//     alert('login: Error:' + message);
-//   }
-//   };
+  signInGoogle = async () => {
+  try {
+    await GoogleSignIn.askForPlayServicesAsync();
+    if (type === 'success') {
+    this._syncUserWithStateAsync();
+    }
+  } catch ({ message }) {
+    alert('login: Error:' + message);
+  }
+  };
 
 
 
 
    handleAutoSignIn = async () => {
    const {navigation} = this.props;
-  await auth.onAuthStateChanged((authUser) => {
+    await auth.onAuthStateChanged((authUser) => {
      if (authUser){
      navigation.push("home");
      } 
@@ -76,7 +76,9 @@ class loginScreen extends Component {
    const { navigation } = this.props;
    const {isAndroid} = this.state;
    return (
-    <KeyboardAvoidingView behavior="height"  style={styles.container}>
+    <KeyboardAvoidingView 
+      behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+      style={styles.container}>
      <View>
         <View style={{justifyContent:"flex-start"}}>
           <Avatar rounded
@@ -154,7 +156,7 @@ class loginScreen extends Component {
       </View>
       <TouchableOpacity 
         style={styles.buttonGoogle}
-        onPress={ () => {}} 
+        onPress={ () => signInGoogle() } 
         type="outline" title="Register">
         <AntDesign name="googleplus" size={30} 
           containerStyle={{marginRight: 20}}
@@ -163,7 +165,7 @@ class loginScreen extends Component {
       </TouchableOpacity>
       </View>
       )}
-    </KeyboardAvoidingView >
+    </KeyboardAvoidingView>
    )
    }
 };

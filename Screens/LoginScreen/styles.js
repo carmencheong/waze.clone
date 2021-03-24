@@ -1,11 +1,14 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
+// minimum window hieght so keyboard does not push content up
+const minWindowHeight = Math.round(Dimensions.get('window').height);
 export default StyleSheet.create({
 container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: "white"
+        backgroundColor: "white",
+        minHeight: minWindowHeight,
     },
     title: {
 

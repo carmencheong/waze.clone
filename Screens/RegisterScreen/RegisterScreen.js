@@ -1,5 +1,5 @@
 import React, { Component, createRef } from 'react'
-import { KeyboardAvoidingView, Text, TouchableOpacity} from 'react-native';
+import { KeyboardAvoidingView, Platform, Text, TouchableOpacity} from 'react-native';
 import { Input, Avatar } from 'react-native-elements';
 import { MaterialIcons, AntDesign } from "@expo/vector-icons";
 import { View} from 'react-native';
@@ -36,7 +36,9 @@ class RegisterScreen extends Component {
      const { email } = this.state;
      const { navigation } = this.props;
      return (
-      <KeyboardAvoidingView behavior="padding" style={styles.container}>
+      <KeyboardAvoidingView 
+        behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+        style={styles.container}>
        <View style={styles.inputContainer} >
        <View style={{justifyContent:"flex-start"}}>
             <TouchableOpacity 

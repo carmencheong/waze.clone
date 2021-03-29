@@ -19,3 +19,6 @@ https://user-images.githubusercontent.com/48261339/112912803-14822380-9101-11eb-
 - this app was two week sprint , 45 hours in total. If it was a real app, I would add the following:
 - redux global state managment
 - component folder for all the components.
+- More navgiation animation.
+- Real-time tracking for user destinations
+- Recommending places based on user location.

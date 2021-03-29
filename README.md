@@ -11,7 +11,7 @@ https://user-images.githubusercontent.com/48261339/112912803-14822380-9101-11eb-
 - splash screen
 - demo screen ( I would refactor it into Flatlist if i had the time )
 - location access screen
-- mapview with user location ( docs : https://www.npmjs.com/package/react-native-maps-navigation )
+- mapview with user location ( docs : https://www.npmjs.com/package/react-native-maps )
 - google auto complete with ( https://www.npmjs.com/package/react-native-google-places-autocomplete )
 - react native map routing and navigation with ( https://www.npmjs.com/package/react-native-maps-directions )
 

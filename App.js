@@ -10,7 +10,8 @@ import LoadingScreen from './Screens/LoadingScreen/LoadingScreen';
 import LoginScreen from "./Screens/LoginScreen/LoginScreen";
 import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen";
 import LocationAccess from "./Screens/LocationAccess/LocationAccess";
-import DemoScreen from "./Screens/DemoScreen/DemoScreen"
+import DemoScreen from "./Screens/DemoScreen/DemoScreen";
+import SearchScreen from "./Screens/SearchScreen/SearchScreen";
 const Stack = createStackNavigator();
 const globalScreenOptions = {
   headerStyle: { backgroundColor:"#2C6BED"},
@@ -46,6 +47,10 @@ export default function App() {
           name="home" 
           options={{headerShown: false}}
           component={HomeScreen} />
+        <Stack.Screen 
+          name="search" 
+          options={{headerShown: false}}
+          component={SearchScreen} />
         <Stack.Screen 
           name="register" 
           options={{headerShown: false}}

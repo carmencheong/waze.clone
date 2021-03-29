@@ -53,7 +53,7 @@ class loginScreen extends Component {
    const {navigation} = this.props;
     await auth.onAuthStateChanged((authUser) => {
      if (authUser){
-     navigation.push("home");
+     navigation.push("locationAccess");
      } 
    });
    };
@@ -65,10 +65,11 @@ class loginScreen extends Component {
    auth
    .signInWithEmailAndPassword(email,password)
    .then(
-     navigation.push("home")
+     navigation.navigate("locationAccess")
    )
-   .catch((error) => alert(error));
+   .catch((error) => { alert(error)
    navigation.navigate("login")
+   })
     }, 1000);
    };
 

@@ -22,11 +22,13 @@ class RegisterScreen extends Component {
 
     handleRegisterUsers = async () => {
      const {email, password} = this.state;
+     const { navigation } = this.props;
      await auth.createUserWithEmailAndPassword(email, password)
+    .catch((error) => alert(error.message))
      .then(
-      navigation.push('login')
+      
+      navigation.goBack()
      )
-     .catch((error) => alert(error.message));
     };
 
     handleRegisterWithGoogle = async () => {

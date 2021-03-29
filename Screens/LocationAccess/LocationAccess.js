@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Image, Text, TouchableOpacity,  View } from 'react-native'
+import { Image, Text, KeyboardAvoidingView, TouchableOpacity,  View } from 'react-native'
 import { FontAwesome, AntDesign } from "@expo/vector-icons";
 import styles from "./styles"
 import * as Location from 'expo-location';
@@ -23,7 +23,7 @@ const LocationAccess = ({navigation, route}) => {
         },
         headerLeft: () => (
           <TouchableOpacity 
-                onPress={ () => navigation.push('home')}>
+                onPress={ () => navigation.push('demo')}>
                 <AntDesign 
                     name="leftcircle" size={30} 
                     color="#1f3559"
@@ -67,7 +67,7 @@ const LocationAccess = ({navigation, route}) => {
   }
 
   return (
-  <View style={styles.container}>
+  <KeyboardAvoidingView style={styles.container}>
     <Image
     style={styles.image}
     source={require('../.././assets/location.png')} />
@@ -110,7 +110,7 @@ const LocationAccess = ({navigation, route}) => {
     </View>
     <View style={{height: 100}} />
     
-  </View>
+  </KeyboardAvoidingView>
   )
 }
 

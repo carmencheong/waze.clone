@@ -1,7 +1,11 @@
 
-
 # waze.clone
 Clone app with expo for famous GPS/ navigation app Waze.
+
+# Quick demo:
+
+https://user-images.githubusercontent.com/48261339/112912803-14822380-9101-11eb-9eac-a6c64c245acf.mp4
+
 
 # Features:
 - splash screen
